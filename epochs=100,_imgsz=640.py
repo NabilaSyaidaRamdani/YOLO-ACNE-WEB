@@ -7,18 +7,24 @@ Original file is located at
     https://colab.research.google.com/drive/1U87-LUhOSsLd-cjkRD4tSYE9dJ336bM3
 """
 
-!pip install ultralytics
-
-!pip install roboflow
-
 from roboflow import Roboflow
 rf = Roboflow(api_key="MhaWKs2rMpRapBn7LfYH")
 project = rf.workspace("nabila-syaida-ramdani-re1zj").project("acnee-iga6p")
 version = project.version(1)
 dataset = version.download("yolov11")
 
-!yolo detect train data=/content/acnee-1/data.yaml model=yolo11s.pt epochs=100 imgsz=640 batch=64
+from ultralytics import YOLO
 
+# Load model pre-trained
+model = YOLO('yolo11s.pt')  # Ganti dengan path model kamu
+
+# Train model
+model.train(
+    data='/content/acnee-1/data.yaml',  # Path ke file .yaml
+    epochs=100,  # Jumlah epoch
+    imgsz=640,  # Ukuran gambar
+    batch=64,  # Batch size
+)
 from IPython.display import Image as IPyImage
 
 IPyImage(filename=f'/content/runs/detect/train2/confusion_matrix.png', width=600)
@@ -30,8 +36,4 @@ IPyImage(filename=f'/content/runs/detect/train2/train_batch0.jpg', width=600)
 from IPython.display import Image as IPyImage
 
 IPyImage(filename=f'/content/runs/detect/train2/val_batch0_labels.jpg', width=600)
-
-!zip -r runs.zip /content/runs/detect/train2
-
-!zip -r acne2.zip /content/acnee-1
 
