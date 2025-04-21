@@ -15,16 +15,9 @@ dataset = version.download("yolov11")
 
 from ultralytics import YOLO
 
-# Load model pre-trained
-model = YOLO('yolo11s.pt')  # Ganti dengan path model kamu
+!yolo detect train data=/content/acnee-1/data.yaml model=yolo11s.pt epochs=100 imgsz=640 batch=64
 
-# Train model
-model.train(
-    data='/content/acnee-1/data.yaml',  # Path ke file .yaml
-    epochs=100,  # Jumlah epoch
-    imgsz=640,  # Ukuran gambar
-    batch=64,  # Batch size
-)
+
 from IPython.display import Image as IPyImage
 
 IPyImage(filename=f'/content/runs/detect/train2/confusion_matrix.png', width=600)
