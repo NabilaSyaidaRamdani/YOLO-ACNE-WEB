@@ -17,16 +17,7 @@ from ultralytics import YOLO
 
 from ultralytics import YOLO
 
-# Load model pre-trained
-model = YOLO('yolo11s.pt')  # Ganti dengan path model kamu
-
-# Train model
-model.train(
-    data='/content/acnee-1/data.yaml',  # Path ke file .yaml dataset
-    epochs=100,  # Jumlah epoch
-    imgsz=640,  # Ukuran gambar
-    batch=64,  # Batch size
-)
+yolo detect train data=/content/acnee-1/data.yaml model=yolo11s.pt epochs=100 imgsz=640 batch=64
 
 from IPython.display import Image as IPyImage
 
