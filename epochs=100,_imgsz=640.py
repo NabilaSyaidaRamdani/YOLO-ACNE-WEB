@@ -17,7 +17,7 @@ from ultralytics import YOLO
 
 from ultralytics import YOLO
 
-yolo detect train data=/content/acnee-1/data.yaml model=yolo11s.pt epochs=100 imgsz=640 batch=64
+!yolo detect train data=/content/acnee-1/data.yaml model=yolo11s.pt epochs=100 imgsz=640 batch=64
 
 from IPython.display import Image as IPyImage
 
