@@ -24,8 +24,3 @@ IPyImage(filename=f'/content/runs/detect/train2/train_batch0.jpg', width=600)
 from IPython.display import Image as IPyImage
 
 IPyImage(filename=f'/content/runs/detect/train2/val_batch0_labels.jpg', width=600)
-
-!zip -r runs.zip /content/runs/detect/train2
-
-!zip -r acne2.zip /content/acnee-1
-
