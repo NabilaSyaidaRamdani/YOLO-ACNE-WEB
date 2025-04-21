@@ -12,15 +12,3 @@ rf = Roboflow(api_key="MhaWKs2rMpRapBn7LfYH")
 project = rf.workspace("nabila-syaida-ramdani-re1zj").project("acnee-iga6p")
 version = project.version(1)
 dataset = version.download("yolov11")
-
-from IPython.display import Image as IPyImage
-
-IPyImage(filename=f'/content/runs/detect/train2/confusion_matrix.png', width=600)
-
-from IPython.display import Image as IPyImage
-
-IPyImage(filename=f'/content/runs/detect/train2/train_batch0.jpg', width=600)
-
-from IPython.display import Image as IPyImage
-
-IPyImage(filename=f'/content/runs/detect/train2/val_batch0_labels.jpg', width=600)
