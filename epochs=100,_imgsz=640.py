@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1U87-LUhOSsLd-cjkRD4tSYE9dJ336bM3
 """
 
-!pip install ultralytics
-
 !pip install roboflow
 
 from roboflow import Roboflow
