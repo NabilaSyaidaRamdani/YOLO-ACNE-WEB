@@ -10,7 +10,7 @@ st.set_page_config(page_title="ACNE DETECTION", layout="wide", initial_sidebar_s
 st.title("Acne Detection With yolov11")
 
 #Load Model Yolov11
-model = ('best.pt')
+model = YOLO('best.pt')
 
 #Membuat Function untuk plot bounding boxes pada frames
 
