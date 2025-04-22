@@ -50,18 +50,17 @@ def plot_boxes(frame, model):
     for result in results:
         boxes = result.boxes
         for box in boxes:
-            b = box.xyxy[0].cpu().numpy()  # Get the bounding box as an array
+            b = box.xyxy[0].cpu().numpy()  # Make sure this is a list or array
             c = int(box.cls[0].item())  # Class index
             label = model.names[c]  # Get the class name from the model
 
-            # Convert coordinates to integer values
-            x1, y1, x2, y2 = map(int, b)
-            
-            # Call the box_label method with x1, y1, x2, y2 as separate arguments
-            annotator.box_label(x1, y1, x2, y2, f"{label} ✨")  # Use individual arguments instead of tuple
+            # Convert the coordinates to integers, and unpack them
+            x1, y1, x2, y2 = map(int, b)  # Ensure these are integers
+
+            # Instead of passing a tuple, pass the separate values for the bounding box
+            annotator.box_label([x1, y1, x2, y2], f"{label} ✨")  # Now using list properly
 
     return annotator.result()
-
 
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
