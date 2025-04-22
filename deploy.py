@@ -6,6 +6,25 @@ import numpy as np
 import tempfile
 from PIL import Image
 
+
+# 🌟 Tambahkan background lucu dengan CSS
+st.markdown("""
+    <style>
+    body {
+        background-image: url("https://i.pinimg.com/originals/1d/b1/2f/1db12f5cb7f421a155b21adf5974c96e.gif");
+        background-size: cover;
+    }
+    .stApp {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 12px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
+
+
 # Set konfigurasi halaman Streamlit
 st.set_page_config(page_title="Acne Detection", layout="wide")
 
@@ -16,18 +35,20 @@ st.markdown("Selamat datang di deteksi jerawat otomatis! 😎 Yuk cari tahu jeni
 # Load model YOLOv11
 model = YOLO("best.pt")  # Pastikan file best.pt ada di folder yang sama
 
-# Fungsi untuk plot bounding boxes di frame
 def plot_boxes(frame, model):
-    results = model.predict(frame)
+    results = model.predict(frame, verbose=False)
     annotator = Annotator(frame)
 
     for result in results:
         boxes = result.boxes
         for box in boxes:
-            b = box.xyxy[0].cpu().numpy()  # Koordinat kotak
-            c = int(box.cls[0].item())     # Kelas
+            b = box.xyxy[0].cpu().numpy()  # pastikan numpy array
+            c = int(box.cls[0].item())     # kelas prediksi
             label = model.names[c]
-            annotator.box_label(b, label + " 🧼")
+
+            # Convert to list of int, karena draw.rectangle butuh int
+            x1, y1, x2, y2 = map(int, b)
+            annotator.box_label([x1, y1, x2, y2], label + " 🧼")
 
     return annotator.result()
 
