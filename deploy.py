@@ -55,9 +55,8 @@ def plot_boxes(frame, model):
             c = int(box.cls[0].item())
             label = model.names[c]
 
-            # Convert to int
             x1, y1, x2, y2 = map(int, b)
-            annotator.box_label([x1, y1, x2, y2], f"{label} ✨")
+            annotator.box_label((x1, y1, x2, y2), f"{label} ✨")  # <-- pakai tuple
 
     return annotator.result()
 
