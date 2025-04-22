@@ -103,4 +103,21 @@ elif source == "Upload Video":
                 break
             frame = cv2.resize(frame, (640, 480))
             frame = plot_boxes(frame, model)
-            placeholder.image(frame, channels="
+            placeholder.image(frame, channels="BGR", use_column_width=True)
+
+        cap.release()
+        st.success("🎉 Video selesai diproses!")
+
+# 🖼️ Upload Gambar
+elif source == "Upload Gambar":
+    uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg", "jpeg", "png"])
+    if uploaded_image:
+        image = Image.open(uploaded_image)
+        frame = np.array(image.convert("RGB"))
+        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+
+        st.image(frame, caption="Gambar Asli 💁", use_column_width=True)
+
+        result_img = plot_boxes(frame, model)
+        st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_column_width=True)
+        st.balloons()
