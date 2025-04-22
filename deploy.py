@@ -63,11 +63,3 @@ if start:
         cap.release()
         st.success("Deteksi dihentikan.")
 
-import cv2
-
-cap = cv2.VideoCapture(0)
-if not cap.isOpened():
-    print("Kamera tidak bisa dibuka")
-else:
-    print("Kamera terbuka")
-
