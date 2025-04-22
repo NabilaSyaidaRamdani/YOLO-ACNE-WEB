@@ -10,11 +10,11 @@ import numpy as np
 import tempfile
 from PIL import Image
 
-# 🌼 CSS Background lucu dan gaya imut
+# 🌼 CSS Background lucu dan gaya imut dengan warna ocean blue
 st.markdown("""
     <style>
     body {
-        background-image: url("https://i.pinimg.com/originals/1d/b1/2f/1db12f5cb7f421a155b21adf5974c96e.gif");
+        background-color: #1E90FF;  /* Ocean Blue */
         background-size: cover;
         background-position: center;
         font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -56,7 +56,7 @@ def plot_boxes(frame, model):
             label = model.names[c]
 
             x1, y1, x2, y2 = map(int, b)
-            annotator.box_label((x1, y1, x2, y2), f"{label} ✨")  # <-- pakai tuple
+            annotator.box_label((x1, y1, x2, y2), f"{label} ✨")  # gunakan tuple, bukan list
 
     return annotator.result()
 
@@ -82,7 +82,7 @@ if source == "Webcam":
                     break
                 frame = cv2.resize(frame, (640, 480))
                 frame = plot_boxes(frame, model)
-                placeholder.image(frame, channels="BGR", use_column_width=True)
+                placeholder.image(frame, channels="BGR", use_container_width=True)
 
             cap.release()
             st.success("✅ Deteksi webcam dihentikan.")
@@ -102,7 +102,7 @@ elif source == "Upload Video":
                 break
             frame = cv2.resize(frame, (640, 480))
             frame = plot_boxes(frame, model)
-            placeholder.image(frame, channels="BGR", use_column_width=True)
+            placeholder.image(frame, channels="BGR", use_container_width=True)
 
         cap.release()
         st.success("🎉 Video selesai diproses!")
@@ -115,8 +115,8 @@ elif source == "Upload Gambar":
         frame = np.array(image.convert("RGB"))
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
-        st.image(frame, caption="Gambar Asli 💁", use_column_width=True)
+        st.image(frame, caption="Gambar Asli 💁", use_container_width=True)
 
         result_img = plot_boxes(frame, model)
-        st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_column_width=True)
+        st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
         st.balloons()
