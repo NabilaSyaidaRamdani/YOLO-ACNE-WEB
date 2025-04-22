@@ -43,7 +43,6 @@ st.markdown("""
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
 
-# 💄 Fungsi untuk menggambar hasil prediksi
 def plot_boxes(frame, model):
     results = model.predict(frame, verbose=False)
     annotator = Annotator(frame)
@@ -51,14 +50,18 @@ def plot_boxes(frame, model):
     for result in results:
         boxes = result.boxes
         for box in boxes:
-            b = box.xyxy[0].cpu().numpy()
-            c = int(box.cls[0].item())
-            label = model.names[c]
+            b = box.xyxy[0].cpu().numpy()  # Get the bounding box as an array
+            c = int(box.cls[0].item())  # Class index
+            label = model.names[c]  # Get the class name from the model
 
+            # Convert coordinates to integer values
             x1, y1, x2, y2 = map(int, b)
-            annotator.box_label((x1, y1, x2, y2), f"{label} ✨")  # gunakan tuple, bukan list
+            
+            # Call the box_label method with x1, y1, x2, y2 as separate arguments
+            annotator.box_label(x1, y1, x2, y2, f"{label} ✨")  # Use individual arguments instead of tuple
 
     return annotator.result()
+
 
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
