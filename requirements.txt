@@ -6,3 +6,4 @@ numpy
 roboflow
 torch
 yolo
+vidgear
