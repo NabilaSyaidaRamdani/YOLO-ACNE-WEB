@@ -1,45 +1,64 @@
-from ultralytics import YOLO
-from ultralytics.utils.plotting import Annotator
 import streamlit as st
 import cv2
-from vidgear.gears import CamGear
+from ultralytics import YOLO
+from ultralytics.utils.plotting import Annotator
+import numpy as np
 
-#Membuat Streamlit UI
-st.set_page_config(page_title="ACNE DETECTION", layout="wide", initial_sidebar_state="expanded")
+# Set konfigurasi halaman Streamlit
+st.set_page_config(page_title="Acne Detection", layout="wide")
 
-st.title("Acne Detection With yolov11")
+# Judul aplikasi
+st.title("🧴 Acne Detection with YOLOv11")
 
-#Load Model Yolov11
-model = YOLO('best.pt')
+# Load model YOLOv11
+model = YOLO("best.pt")  # pastikan file best.pt ada di folder ini
 
-#Membuat Function untuk plot bounding boxes pada frames
-
+# Fungsi untuk plot bounding boxes di frame
 def plot_boxes(frame, model):
     results = model.predict(frame)
-    annotasi = Annotator(frame)
-    for r in results:
-        boxes = r.boxes
+    annotator = Annotator(frame)
+
+    for result in results:
+        boxes = result.boxes
         for box in boxes:
-            b = box.xyxy[0]   # Box Coordinat
-            c = box.cls
-            annotasi.box_label(b, model.names[int(c)])
-        return annotasi.results()
+            b = box.xyxy[0].cpu().numpy()  # koordinat box
+            c = int(box.cls[0].item())     # class index
+            label = model.names[c]
+            annotator.box_label(b, label)
 
-#Membuat Function untuk proces dan display video
+    return annotator.result()
 
-def process_video(data, model, placeholder):
-    if data == 'Webcam':
-        camera = cv2.VideoCapture(0)  #Kode Webcam
-    else: 
-        camera = CamGear(source=data, stream_mode=True, logging=True).start()
-    while True:
-        if data == 'Webcam':
-            ret, frame = camera.read()
-            if not ret:
+# Sidebar untuk memilih sumber video
+source = st.sidebar.selectbox("Pilih Sumber Video:", ["Webcam", "Contoh Video"])
+
+# Tombol mulai
+start = st.button("Mulai Deteksi")
+
+# Tempat untuk menampilkan video
+placeholder = st.empty()
+
+if start:
+    if source == "Webcam":
+        cap = cv2.VideoCapture(0)
+    else:
+        cap = cv2.VideoCapture("contoh_video.mp4")  # ganti dengan file video jika perlu
+
+    if not cap.isOpened():
+        st.error("Tidak bisa membuka kamera/video.")
+    else:
+        st.info("Tekan tombol 'Stop' di atas untuk menghentikan.")
+        stop_button = st.button("Stop")
+
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret or stop_button:
                 break
-        else:
-            frame = camera.read()
-            if frame is None:
-                break
-            
 
+            frame = cv2.resize(frame, (640, 480))
+            frame = plot_boxes(frame, model)
+
+            # Tampilkan ke Streamlit
+            placeholder.image(frame, channels="BGR", use_column_width=True)
+
+        cap.release()
+        st.success("Deteksi dihentikan.")
