@@ -26,12 +26,24 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# 🌷 Judul Aplikasi
+# 🌷 Judul Aplikasi dengan Box Shadow
 st.markdown("""
-    Selamat datang di **deteksi jerawat otomatis**! 😎  
-    Yuk cari tahu jenis jerawatmu hanya dengan klik satu tombol 💡  
-    Jangan lupa senyum ya! 😊✨
-""")
+    <div style='
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #ffffffcc;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    '>
+        <h2 style='color: #333;'>🌷 Selamat datang di <strong>deteksi jerawat otomatis</strong>! 😎</h2>
+        <p style='font-size: 16px; color: #444;'>
+            Yuk cari tahu jenis jerawatmu hanya dengan klik satu tombol 💡<br>
+            Jangan lupa senyum ya! 😊✨
+        </p>
+    </div>
+""", unsafe_allow_html=True)
+
 
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
