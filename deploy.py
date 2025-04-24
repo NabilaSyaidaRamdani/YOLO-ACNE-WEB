@@ -29,19 +29,14 @@ st.markdown("""
 st.markdown("""
     <div style="display: flex; flex-direction: column; row-gap: 1rem; margin-top: 2rem;">
         <div style="background: #FFCDD2; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(255,205,210,0.4); text-align: center; color: #B71C1C; font-weight: bold;">
-            ⚡ Fast
         </div>
         <div style="background: #F8BBD0; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(248,187,208,0.4); text-align: center; color: #880E4F; font-weight: bold;">
-            🔬 Accurate
         </div>
         <div style="background: #E1BEE7; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(225,190,231,0.4); text-align: center; color: #4A148C; font-weight: bold;">
-            🌷 Personalized
         </div>
         <div style="background: #D1C4E9; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(209,196,233,0.4); text-align: center; color: #311B92; font-weight: bold;">
-            🔒 Safe
         </div>
         <div style="background: #C5CAE9; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(197,202,233,0.4); text-align: center; color: #1A237E; font-weight: bold;">
-            🎉 Fun
         </div>
     </div>
 """, unsafe_allow_html=True)
