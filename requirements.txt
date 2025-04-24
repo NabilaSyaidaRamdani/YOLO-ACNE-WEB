@@ -3,7 +3,7 @@ numpy<2
 roboflow
 yolo
 vidgear
-streamlit==1.32.2
-opencv-python-headless==4.8.0.76
-torch==2.0.1
-ultralytics==8.0.219
+streamlit
+opencv-python-headless
+torch
+ultralytics
