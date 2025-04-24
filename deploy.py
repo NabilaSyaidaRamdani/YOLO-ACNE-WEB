@@ -133,32 +133,36 @@ st.sidebar.markdown("""
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("### 💡 Skincare Tips & Trick")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.markdown("""
-        **🌞 Pagi**
-        - 🧼 Cuci muka dengan gentle cleanser  
-        - ☀️ Gunakan sunscreen SPF 30+
-        - 💧 Moisturizer ringan
-        """)
-
-    with col2:
-        st.markdown("""
-        **🌙 Malam**
-        - 🌿 Double cleansing (oil + foam)  
-        - 🎯 Gunakan serum (niacinamide / AHA-BHA)
-        - 💤 Night cream atau sleeping mask
-        """)
-
-    st.markdown("---")
     st.markdown("""
-    <div style='text-align: center; font-size: 14px; color: #D63384;'>
-        💕 Rutin itu kunci kulit sehat 💕
-    </div>
+        <div style="
+            background-color: #fff0f5;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+        ">
+            <h4 style="color:#d63384;">💡 Skincare Tips & Trick</h4>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="width: 48%;">
+                    <strong>🌞 Pagi</strong><br>
+                    🧼 Gentle cleanser<br>
+                    ☀️ Sunscreen SPF 30+<br>
+                    💧 Moisturizer ringan
+                </div>
+                <div style="width: 48%;">
+                    <strong>🌙 Malam</strong><br>
+                    🌿 Double cleansing<br>
+                    🎯 Serum (AHA-BHA)<br>
+                    💤 Night cream
+                </div>
+            </div>
+            <hr style="margin-top:10px; margin-bottom:10px;">
+            <div style='text-align: center; font-size: 13px; color: #D63384;'>
+                💕 Rutin itu kunci kulit sehat 💕
+            </div>
+        </div>
     """, unsafe_allow_html=True)
+
 
 
 
