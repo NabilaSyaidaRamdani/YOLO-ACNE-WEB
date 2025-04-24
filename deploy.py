@@ -21,7 +21,7 @@ st.markdown("""
         <h1 style='color: #D63384;'>💖 Welcome to AcneVision</h1>
         <p style='font-size: 18px; color: #555555;'>
             Detect your acne type easily and get personalized skincare tips 🌷<br>
-            Powered by YOLOv11 and DeepSORT
+            Powered by YOLOv11
         </p>
     </div>
 """, unsafe_allow_html=True)
