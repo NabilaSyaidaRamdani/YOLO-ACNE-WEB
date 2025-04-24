@@ -28,22 +28,35 @@ st.markdown("""
 
 # 🌷 Judul Aplikasi dengan Box Shadow
 st.markdown("""
+    <div style="text-align: center; margin: 30px 0;">
+        <img src="https://i.ibb.co/ZTkj9hC/cloud-divider.png" style="width: 100%;"/>
+    </div>
+""", unsafe_allow_html=True)
+""")
+
+📌 *Nanti bisa aku bantuin bikin gambar "awan" ini kalau kamu belum punya file-nya ya.*
+
+---
+
+#### ✅ 3. **Bagian “Join our family” + Form**
+```python
+st.markdown("""
     <div style='
-        margin-top: 1.5rem;
-        padding: 1.5rem;
-        background-color: #ffffffcc;
-        border-radius: 15px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #CDE8FF;
+        padding: 30px;
+        border-radius: 20px;
         text-align: center;
+        margin-top: 2rem;
     '>
-        <h2 style='color: #333;'>🌷 Selamat datang di <strong>deteksi jerawat otomatis</strong>! 😎</h2>
-        <p style='font-size: 16px; color: #444;'>
-            Yuk cari tahu jenis jerawatmu hanya dengan klik satu tombol 💡<br>
-            Jangan lupa senyum ya! 😊✨
-        </p>
+        <h2 style='color: #3E80D8;'>💖 Join the AcneVision family</h2>
+        <p>Subscribe untuk tips perawatan kulit & info produk terbaru 🌷</p>
     </div>
 """, unsafe_allow_html=True)
 
+name = st.text_input("Nama")
+email = st.text_input("Email")
+if st.button("Subscribe"):
+    st.success(f"Terima kasih, {name}! 💌 Kami akan mengirim update ke {email}.")
 
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
