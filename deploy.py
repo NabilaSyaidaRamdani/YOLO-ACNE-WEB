@@ -5,10 +5,10 @@ import numpy as np
 from PIL import Image
 import tempfile
 
-# 🌸 HARUS DITEMPATKAN DI AWAL
+# ✰ HARUS DITEMPATKAN DI AWAL
 st.set_page_config(page_title="Acne Detection", layout="wide")
 
-# 🌼 CSS Background lucu dan gaya imut dengan warna ocean blue
+# ἳ8 Welcome Banner with Frosted Glass Effect
 st.markdown("""
     <div style='
         background: rgba(255, 255, 255, 0.6);
@@ -25,7 +25,28 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# 💡 Load model YOLOv11
+# ✏ Insert 5 Colored Feature Boxes Below Banner
+st.markdown("""
+    <div style="display:flex; justify-content: space-between; margin-top: 2rem;">
+        <div style="flex:1; background:#FFCDD2; margin:0 5px; padding:1rem; border-radius:12px; box-shadow:0 4px 12px rgba(255,205,210,0.6); text-align:center; color:#B71C1C; font-weight:bold;">
+            ⚡ Fast
+        </div>
+        <div style="flex:1; background:#F8BBD0; margin:0 5px; padding:1rem; border-radius:12px; box-shadow:0 4px 12px rgba(248,187,208,0.6); text-align:center; color:#880E4F; font-weight:bold;">
+            🔬 Accurate
+        </div>
+        <div style="flex:1; background:#E1BEE7; margin:0 5px; padding:1rem; border-radius:12px; box-shadow:0 4px 12px rgba(225,190,231,0.6); text-align:center; color:#4A148C; font-weight:bold;">
+            🌷 Personalized
+        </div>
+        <div style="flex:1; background:#D1C4E9; margin:0 5px; padding:1rem; border-radius:12px; box-shadow:0 4px 12px rgba(209,196,233,0.6); text-align:center; color:#311B92; font-weight:bold;">
+            🔒 Safe
+        </div>
+        <div style="flex:1; background:#C5CAE9; margin:0 5px; padding:1rem; border-radius:12px; box-shadow:0 4px 12px rgba(197,202,233,0.6); text-align:center; color:#1A237E; font-weight:bold;">
+            🎉 Fun
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
+# 🔥 Load model YOLOv11
 model = YOLO("best.pt")
 
 def plot_boxes(frame, model):
@@ -88,7 +109,7 @@ def show_recommendations(labels):
             - 🧴 **Rekomendasi**: *Neutrogena Clear Pore Cleanser/Mask*
             """)
 
-# 🎀 Sidebar input: pilihan & uploader
+# 👇 Sidebar input (video/image upload & tips)
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Upload Video", "Upload Gambar"])
 
 st.sidebar.markdown("""
@@ -105,7 +126,6 @@ st.sidebar.markdown("""
     <br><br>
 """, unsafe_allow_html=True)
 
-# Siapkan variabel agar dapat diakses di main page
 uploaded_video = None
 uploaded_image = None
 
@@ -117,7 +137,7 @@ with st.sidebar:
         if st.button("🖼️ Klik untuk memilih gambar"):
             uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
 
-    # Box Tips & Tricks dengan box-shadow
+    # Tips & Tricks box
     st.markdown("""
         <div style="
             background-color: #fff0f5;
@@ -148,10 +168,10 @@ with st.sidebar:
         </div>
     """, unsafe_allow_html=True)
 
-# 🖼️ Placeholder untuk hasil
+# Placeholder for display
 placeholder = st.empty()
 
-# 🎞️ Proses Upload Video
+# Process Upload Video
 if source == "Upload Video" and uploaded_video:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_video.read())
@@ -169,7 +189,7 @@ if source == "Upload Video" and uploaded_video:
     cap.release()
     st.success("🎉 Video selesai diproses!")
 
-# 🖼️ Proses Upload Gambar
+# Process Upload Image
 elif source == "Upload Gambar" and uploaded_image:
     img = Image.open(uploaded_image)
     frame_rgb = np.array(img.convert("RGB"))
