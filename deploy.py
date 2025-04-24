@@ -132,6 +132,37 @@ st.sidebar.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+with st.sidebar:
+    st.markdown("### 💡 Skincare Tips & Trick")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+        **🌞 Pagi**
+        - 🧼 Cuci muka dengan gentle cleanser  
+        - ☀️ Gunakan sunscreen SPF 30+
+        - 💧 Moisturizer ringan
+        """)
+
+    with col2:
+        st.markdown("""
+        **🌙 Malam**
+        - 🌿 Double cleansing (oil + foam)  
+        - 🎯 Gunakan serum (niacinamide / AHA-BHA)
+        - 💤 Night cream atau sleeping mask
+        """)
+
+    st.markdown("---")
+    st.markdown("""
+    <div style='text-align: center; font-size: 14px; color: #D63384;'>
+        💕 Rutin itu kunci kulit sehat 💕
+    </div>
+    """, unsafe_allow_html=True)
+
+
+
+
 # 🖼️ Placeholder untuk output
 placeholder = st.empty()
 
