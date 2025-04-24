@@ -42,11 +42,8 @@ st.markdown("""
 
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
-
 def plot_boxes(frame, model):
     results = model.predict(frame, verbose=False)
-    annotator = Annotator(frame)
-
     labels = []  # List to store detected labels
 
     for result in results:
@@ -59,10 +56,13 @@ def plot_boxes(frame, model):
             # Convert the coordinates to integers, and unpack them
             x1, y1, x2, y2 = map(int, b)  # Ensure these are integers
 
-            annotator.box_label([x1, y1, x2, y2], f"{label} ✨")  # Now using list properly
+            # Draw the bounding box and label using OpenCV
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)  # Draw box with red color
+            cv2.putText(frame, f"{label} ✨", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+
             labels.append(label)  # Add the label to the list
 
-    return annotator.result(), labels
+    return frame, labels
 
 def show_recommendations(labels):
     for label in labels:
