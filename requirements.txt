@@ -1,20 +1,12 @@
-# Image processing & array support
 pillow
 numpy<2
-
-# Main ML/YOLO dependencies
+roboflow
+yolo
+vidgear
+streamlit==1.32.2
+opencv-python-headless==4.8.0.76
 torch==2.0.1
 ultralytics==8.0.219
-opencv-python-headless==4.8.0.76
-
-# Roboflow integration
-roboflow
-
-# Video streaming (jika pakai kamera)
-vidgear
-
-# Streamlit for UI
-streamlit==1.32.2
 
 
 
