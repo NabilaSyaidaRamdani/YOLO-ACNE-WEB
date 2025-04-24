@@ -67,15 +67,13 @@ def show_recommendations(labels):
     for label in labels:
         if label == "Acne Scars":
             st.write("🌟 **Bekas Jerawat:** Gunakan produk yang mengandung retinoid, pertimbangkan terapi laser, dan jangan lupa selalu menggunakan tabir surya! 😊")
-        elif label == "Enlarged Pores":
-            st.write("🌟 **Pori-pori Membesar:** Gunakan produk dengan niacinamide, lakukan eksfoliasi dengan AHA atau asam salisilat. Jaga kebersihan kulit dengan pembersih lembut!")
         elif label == "Whitehead":
             st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
         elif label == "Blackhead":
             st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
-        elif label == "Papules":
-            st.write("🌟 **Papula:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
-        elif label == "Nodules":
+        elif label == "Papule":
+            st.write("🌟 **Papule:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
+        elif label == "Nodule":
             st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
 
 # 🎀 Sidebar input
