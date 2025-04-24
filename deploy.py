@@ -25,6 +25,17 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+    <hr>
+    <div style="text-align: center; font-size: 12px; color: gray;">
+        🌸 Made with 💖 by Nabila | © 2025 AcneVision
+    </div>
+    <div style="text-align: center;">
+        ☁️ ☁️ ☁️
+    </div>
+""", unsafe_allow_html=True)
+
+
 # 🌷 Judul Aplikasi
 st.markdown("""
     Selamat datang di **deteksi jerawat otomatis**! 😎  
