@@ -25,30 +25,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-    <div style="text-align: center; margin: 30px 0;">
-        <img src="https://i.ibb.co/ZTkj9hC/cloud-divider.png" style="width: 100%;"/>
-    </div>
-""", unsafe_allow_html=True)
-""")
-st.markdown("""
-    <div style='
-        background-color: #CDE8FF;
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        margin-top: 2rem;
-    '>
-        <h2 style='color: #3E80D8;'>💖 Join the AcneVision family</h2>
-        <p>Subscribe untuk tips perawatan kulit & info produk terbaru 🌷</p>
-    </div>
-""", unsafe_allow_html=True)
-
-name = st.text_input("Nama")
-email = st.text_input("Email")
-if st.button("Subscribe"):
-    st.success(f"Terima kasih, {name}! 💌 Kami akan mengirim update ke {email}.")
-
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
 
