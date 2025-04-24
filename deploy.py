@@ -139,13 +139,21 @@ elif source == "Upload Gambar":
         frame = np.array(image.convert("RGB"))
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
+        # Resize uploaded image to smaller size (e.g., 320x320)
+        frame = cv2.resize(frame, (320, 320))
+
         st.image(frame, caption="Gambar Asli 💁", use_container_width=True)
 
+        # Process and resize the result image to a smaller size
         result_img, labels = plot_boxes(frame, model)
+        result_img = cv2.resize(result_img, (320, 320))  # Resize result
+
         st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
 
         # Display recommendations
         if labels:
             show_recommendations(labels)
+
+        st.balloons()
 
         st.balloons()
