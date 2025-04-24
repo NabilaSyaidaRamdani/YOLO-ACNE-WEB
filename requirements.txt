@@ -7,3 +7,4 @@ roboflow
 torch
 yolo
 vidgear
+opencv-python-headless
