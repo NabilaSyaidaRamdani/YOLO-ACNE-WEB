@@ -57,7 +57,7 @@ def plot_boxes(frame, model):
 
             # Draw the bounding box and label using OpenCV
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)  # Draw box with red color
-            cv2.putText(frame, f"{label} ✨", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+            cv2.putText(frame, f"{label.capitalize()}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
 
             labels.append(label)  # Add the label to the list
 
@@ -147,15 +147,26 @@ elif source == "Upload Gambar":
     uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg", "jpeg", "png"])
     if uploaded_image:
         image = Image.open(uploaded_image)
-        frame = np.array(image.convert("RGB"))
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
-        st.image(frame, caption="Gambar Asli 💁", use_container_width=True)
+        # 👉 Warna asli (RGB)
+        frame_rgb = np.array(image.convert("RGB"))
 
-        result_img, labels = plot_boxes(frame, model)
-        st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
+        # 👉 Untuk deteksi (konversi ke BGR karena OpenCV pakai BGR)
+        frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
 
-        # Display recommendations
+        # Tampilkan gambar asli
+        st.image(frame_rgb, caption="Gambar Asli 💁", use_container_width=True)
+
+        # Deteksi menggunakan model
+        result_img_bgr, labels = plot_boxes(frame_bgr, model)
+
+        # 👉 Konversi kembali ke RGB untuk ditampilkan di Streamlit
+        result_img_rgb = cv2.cvtColor(result_img_bgr, cv2.COLOR_BGR2RGB)
+
+        # Tampilkan hasil deteksi
+        st.image(result_img_rgb, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
+
+        # Tampilkan rekomendasi
         if labels:
             show_recommendations(labels)
 
