@@ -25,16 +25,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-    <hr>
-    <div style="text-align: center; font-size: 12px; color: gray;">
-        🌸 Made with 💖 by Nabila | © 2025 AcneVision
-    </div>
-    <div style="text-align: center;">
-        ☁️ ☁️ ☁️
-    </div>
-""", unsafe_allow_html=True)
-
 
 # 🌷 Judul Aplikasi
 st.markdown("""
@@ -214,20 +204,24 @@ elif source == "Upload Gambar":
         # 👉 Untuk deteksi (konversi ke BGR karena OpenCV pakai BGR)
         frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
 
-        # Tampilkan gambar asli
-        st.image(frame_rgb, caption="Gambar Asli 💁", use_container_width=True)
-
         # Deteksi menggunakan model
         result_img_bgr, labels = plot_boxes(frame_bgr, model)
 
         # 👉 Konversi kembali ke RGB untuk ditampilkan di Streamlit
         result_img_rgb = cv2.cvtColor(result_img_bgr, cv2.COLOR_BGR2RGB)
 
-        # Tampilkan hasil deteksi
-        st.image(result_img_rgb, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
+        # 🌸 Buat dua kolom untuk gambar
+        col1, col2 = st.columns(2)
 
-        # Tampilkan rekomendasi
+        with col1:
+            st.image(frame_rgb, caption="Gambar Asli 💁", use_container_width=True)
+
+        with col2:
+            st.image(result_img_rgb, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
+
+        # Tampilkan rekomendasi di bawah gambar
         if labels:
+            st.markdown("## 🌟 Rekomendasi Perawatan")
             show_recommendations(labels)
 
         st.balloons()
