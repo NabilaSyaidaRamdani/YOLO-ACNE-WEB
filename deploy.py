@@ -12,7 +12,7 @@ st.set_page_config(page_title="Acne Detection", layout="wide")
 st.markdown("""
     <style>
     body {
-        background-color: #1E90FF;  /* Ocean Blue */
+        background-color: #FFFFFF;  /* Ocean Blue */
         background-size: cover;
         background-position: center;
         font-family: 'Comic Sans MS', cursive, sans-serif;
