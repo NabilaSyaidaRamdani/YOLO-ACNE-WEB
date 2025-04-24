@@ -21,13 +21,11 @@ st.markdown("""
         <h1 style='color: #D63384;'>💖 Welcome to AcneVision</h1>
         <p style='font-size: 18px; color: #555555;'>
             Detect your acne type easily and get personalized skincare tips 🌷<br>
-            Powered by YOLOv11
         </p>
     </div>
 """, unsafe_allow_html=True)
 
 # 🌷 Judul Aplikasi
-st.title("Acne Detection with YOLOv11")
 st.markdown("""
     Selamat datang di **deteksi jerawat otomatis**! 😎  
     Yuk cari tahu jenis jerawatmu hanya dengan klik satu tombol 💡  
