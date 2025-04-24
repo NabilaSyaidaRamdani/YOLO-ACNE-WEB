@@ -47,6 +47,8 @@ def plot_boxes(frame, model):
     results = model.predict(frame, verbose=False)
     annotator = Annotator(frame)
 
+    labels = []  # List to store detected labels
+
     for result in results:
         boxes = result.boxes
         for box in boxes:
@@ -57,10 +59,25 @@ def plot_boxes(frame, model):
             # Convert the coordinates to integers, and unpack them
             x1, y1, x2, y2 = map(int, b)  # Ensure these are integers
 
-            # Instead of passing a tuple, pass the separate values for the bounding box
             annotator.box_label([x1, y1, x2, y2], f"{label} ✨")  # Now using list properly
+            labels.append(label)  # Add the label to the list
 
-    return annotator.result()
+    return annotator.result(), labels
+
+def show_recommendations(labels):
+    for label in labels:
+        if label == "Acne Scars":
+            st.write("🌟 **Bekas Jerawat:** Gunakan produk yang mengandung retinoid, pertimbangkan terapi laser, dan jangan lupa selalu menggunakan tabir surya! 😊")
+        elif label == "Enlarged Pores":
+            st.write("🌟 **Pori-pori Membesar:** Gunakan produk dengan niacinamide, lakukan eksfoliasi dengan AHA atau asam salisilat. Jaga kebersihan kulit dengan pembersih lembut!")
+        elif label == "Whitehead":
+            st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
+        elif label == "Blackhead":
+            st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
+        elif label == "Papules":
+            st.write("🌟 **Papula:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
+        elif label == "Nodules":
+            st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
 
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
@@ -83,8 +100,11 @@ if source == "Webcam":
                 if not ret or stop:
                     break
                 frame = cv2.resize(frame, (640, 480))
-                frame = plot_boxes(frame, model)
-                placeholder.image(frame, channels="BGR", use_container_width=True)
+                result_img, labels = plot_boxes(frame, model)
+                placeholder.image(result_img, channels="BGR", use_container_width=True)
+                
+            # Display recommendations
+            show_recommendations(labels)
 
             cap.release()
             st.success("✅ Deteksi webcam dihentikan.")
@@ -103,8 +123,11 @@ elif source == "Upload Video":
             if not ret:
                 break
             frame = cv2.resize(frame, (640, 480))
-            frame = plot_boxes(frame, model)
-            placeholder.image(frame, channels="BGR", use_container_width=True)
+            result_img, labels = plot_boxes(frame, model)
+            placeholder.image(result_img, channels="BGR", use_container_width=True)
+        
+        # Display recommendations
+        show_recommendations(labels)
 
         cap.release()
         st.success("🎉 Video selesai diproses!")
@@ -119,6 +142,10 @@ elif source == "Upload Gambar":
 
         st.image(frame, caption="Gambar Asli 💁", use_container_width=True)
 
-        result_img = plot_boxes(frame, model)
+        result_img, labels = plot_boxes(frame, model)
         st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
+
+        # Display recommendations
+        show_recommendations(labels)
+
         st.balloons()
