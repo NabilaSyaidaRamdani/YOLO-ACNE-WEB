@@ -113,7 +113,7 @@ def show_recommendations(labels):
             """)
 
 # 🎀 Sidebar input
-source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
+source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Upload Video", "Upload Gambar"])
 
 # 🌸 Tambahan bunga-bunga cantik dan efek glassmorphism
 st.sidebar.markdown("""
@@ -133,12 +133,16 @@ st.sidebar.markdown("""
 """, unsafe_allow_html=True)
 
 with st.sidebar:
+    # Spacer (opsional, kalau pakai <br>)
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+
     st.markdown("""
         <div style="
             background-color: #fff0f5;
             padding: 16px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;         /* <-- dorong ke bawah */
             margin-bottom: 16px;
         ">
             <h4 style="color:#d63384;">💡 Skincare Tips & Trick</h4>
@@ -163,40 +167,11 @@ with st.sidebar:
         </div>
     """, unsafe_allow_html=True)
 
-
-
-
-
 # 🖼️ Placeholder untuk output
 placeholder = st.empty()
 
-# 🎥 Webcam Mode
-if source == "Webcam":
-    if st.button("🎬 Mulai Deteksi Webcam"):
-        cap = cv2.VideoCapture(1)
-        if not cap.isOpened():
-            st.error("😥 Tidak bisa membuka kamera.")
-        else:
-            st.info("Deteksi dimulai... Tampil cakep ya! 😁")
-            stop = st.button("🛑 Stop")
-
-            while cap.isOpened():
-                ret, frame = cap.read()
-                if not ret or stop:
-                    break
-                frame = cv2.resize(frame, (640, 640))
-                result_img, labels = plot_boxes(frame, model)
-                placeholder.image(result_img, channels="BGR", use_container_width=True)
-                
-            # Display recommendations
-            if labels:
-                show_recommendations(labels)
-
-            cap.release()
-            st.success("✅ Deteksi webcam dihentikan.")
-
 # 🎞️ Upload Video
-elif source == "Upload Video":
+if source == "Upload Video":
     uploaded_video = st.file_uploader("📼 Upload video jerawat kamu di sini!", type=["mp4", "avi", "mov"])
     if uploaded_video:
         tfile = tempfile.NamedTemporaryFile(delete=False)
