@@ -128,10 +128,20 @@ def show_recommendations(labels):
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
 
-# 🌸 Tambahan bunga-bunga cantik di bawah pilihan
+# 🌸 Tambahan bunga-bunga cantik dan efek glassmorphism
 st.sidebar.markdown("""
+    <style>
+    [data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-right: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    </style>
+
     <div style='text-align: center; font-size: 20px;'>🌺 🌼 🌸 🌷 🌻 🌹</div>
     <div style='text-align: center; color: #D63384; font-size: 14px;'>
+        <em>Stay glowing ✨</em>
     </div>
 """, unsafe_allow_html=True)
 
