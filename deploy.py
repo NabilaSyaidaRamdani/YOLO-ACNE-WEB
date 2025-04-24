@@ -122,3 +122,7 @@ elif source == "Upload Gambar":
         result_img = plot_boxes(frame, model)
         st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
         st.balloons()
+
+
+pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
