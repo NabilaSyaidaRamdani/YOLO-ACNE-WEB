@@ -12,20 +12,20 @@ st.set_page_config(page_title="Acne Detection", layout="wide")
 st.markdown("""
     <style>
     body {
-        background-color: #FFFFFF;  /* Ocean Blue */
-        background-size: cover;
-        background-position: center;
+        background-color: #FFFFFF;  /* Putih bersih */
         font-family: 'Comic Sans MS', cursive, sans-serif;
     }
     .stApp {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.95);
         padding: 30px;
         border-radius: 20px;
         box-shadow: 0px 0px 20px pink;
+        color: #333333; /* Warna teks utama abu tua */
     }
     h1, h2, h3 {
-        color: #FF69B4;
+        color: #D63384; /* Pink yang lebih gelap */
         text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);  /* Bayangan ringan biar makin jelas */
     }
     </style>
 """, unsafe_allow_html=True)
