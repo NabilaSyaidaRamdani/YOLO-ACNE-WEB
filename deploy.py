@@ -66,26 +66,64 @@ def plot_boxes(frame, model):
 def show_recommendations(labels):
     # Count the occurrences of each acne type
     acne_count = {label: labels.count(label) for label in set(labels)}
-    
-    # Show recommendations for each acne type, only once
+
+    # Emoji dictionary for each acne type
+    emoji_dict = {
+        "whitehead": "⚪",
+        "blackhead": "⚫",
+        "papule": "🔴",
+        "nodule": "🟣",
+        "pustule": "🟡"
+    }
+
     for label in acne_count:
-        st.write(f"**Detected {label.capitalize()} ({acne_count[label]} instance(s))**:")
-        
+        icon = emoji_dict.get(label, "🌸")
+        st.markdown(f"### {icon} **Detected {label.capitalize()} ({acne_count[label]}x)**")
+
         if label == "whitehead":
-            st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
-            st.write("🧴 **CeraVe Renewing SA Cleanser**: Salicylic Acid (BHA), Ceramides, Hyaluronic Acid.")
+            st.markdown("""
+            - ✨ **Komedo Putih Tips**:
+              - 🧽 Eksfoliasi rutin (2-3x/minggu) dengan **Salicylic Acid (BHA)**
+              - ❄️ Gunakan produk yang mengandung **Benzoyl Peroxide** untuk peradangan
+            - 🧴 **Rekomendasi Produk**:
+              - *CeraVe Renewing SA Cleanser* — Salicylic Acid, Ceramides, Hyaluronic Acid
+            """)
+        
         elif label == "blackhead":
-            st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
-            st.write("🧴 **The Ordinary Salicylic Acid 2% Solution**: Salicylic Acid, Witch Hazel Extract.")
+            st.markdown("""
+            - ✨ **Komedo Hitam Tips**:
+              - 🧼 Gunakan cleanser dengan **Salicylic Acid**
+              - 🌿 Gunakan toner dengan **Witch Hazel**
+            - 🧴 **Rekomendasi Produk**:
+              - *The Ordinary Salicylic Acid 2% Solution* — Salicylic Acid, Witch Hazel Extract
+            """)
+        
         elif label == "papule":
-            st.write("🌟 **Papule:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
-            st.write("🧴 **CeraVe Acne Foaming Cream Cleanser**: Benzoyl Peroxide, Niacinamide.")
+            st.markdown("""
+            - ✨ **Papule Tips**:
+              - 🚫 Jangan dipencet!
+              - 💊 Gunakan **Benzoyl Peroxide** gel/cream
+            - 🧴 **Rekomendasi Produk**:
+              - *CeraVe Acne Foaming Cream Cleanser* — Benzoyl Peroxide, Niacinamide
+            """)
+        
         elif label == "nodule":
-            st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
-            st.write("🧴 **Cetaphil PRO Oil Removing Foam Wash**: Zinc Gluconate, Glycerin.")
+            st.markdown("""
+            - ✨ **Nodul Tips**:
+              - 🔬 Konsultasikan ke dokter kulit
+              - 💊 Retinoid oral & antibiotik bila diperlukan
+            - 🧴 **Rekomendasi Produk**:
+              - *Cetaphil PRO Oil Removing Foam Wash* — Zinc Gluconate, Glycerin
+            """)
+        
         elif label == "pustule":
-            st.write("🌟 **Pustule:** Gunakan produk dengan benzoyl peroxide dan asam salisilat. Hindari memencetnya, dan pertimbangkan untuk berkonsultasi dengan dokter kulit.")
-            st.write("🧴 **Neutrogena Clear Pore Cleanser/Mask**: Benzoyl Peroxide (3.5%), Kaolin Clay.")
+            st.markdown("""
+            - ✨ **Pustule Tips**:
+              - ❌ Hindari memencet!
+              - 💧 Gunakan produk kombinasi **Benzoyl Peroxide** + **Salicylic Acid**
+            - 🧴 **Rekomendasi Produk**:
+              - *Neutrogena Clear Pore Cleanser/Mask* — Benzoyl Peroxide (3.5%), Kaolin Clay
+            """)
 
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
