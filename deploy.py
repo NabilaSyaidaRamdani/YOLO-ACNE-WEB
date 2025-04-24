@@ -90,6 +90,14 @@ def show_recommendations(labels):
 # 🎀 Sidebar input
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Webcam", "Upload Video", "Upload Gambar"])
 
+# 🌸 Tambahan bunga-bunga cantik di bawah pilihan
+st.sidebar.markdown("""
+    <div style='text-align: center; font-size: 20px;'>🌺 🌼 🌸 🌷 🌻 🌹</div>
+    <div style='text-align: center; color: #D63384; font-size: 14px;'>
+        Ayo pilih dan temukan jenis jerawatmu~ ✨
+    </div>
+""", unsafe_allow_html=True)
+
 # 🖼️ Placeholder untuk output
 placeholder = st.empty()
 
