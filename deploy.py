@@ -71,7 +71,7 @@ def show_recommendations(labels):
             st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
         elif label == "Blackhead":
             st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
-        elif label == "Papule":
+        elif label == "Papules":
             st.write("🌟 **Papule:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
         elif label == "Nodule":
             st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
@@ -139,21 +139,13 @@ elif source == "Upload Gambar":
         frame = np.array(image.convert("RGB"))
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
-        # Resize uploaded image to smaller size (e.g., 320x320)
-        frame = cv2.resize(frame, (320, 320))
-
         st.image(frame, caption="Gambar Asli 💁", use_container_width=True)
 
-        # Process and resize the result image to a smaller size
         result_img, labels = plot_boxes(frame, model)
-        result_img = cv2.resize(result_img, (320, 320))  # Resize result
-
         st.image(result_img, caption="Hasil Deteksi Jerawat 💆", use_container_width=True)
 
         # Display recommendations
         if labels:
             show_recommendations(labels)
-
-        st.balloons()
 
         st.balloons()
