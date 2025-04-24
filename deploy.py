@@ -31,7 +31,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 🌷 Judul Aplikasi
-st.title("🧴 Acne Detection with YOLOv11 💥")
+st.title("Acne Detection with YOLOv11")
 st.markdown("""
     Selamat datang di **deteksi jerawat otomatis**! 😎  
     Yuk cari tahu jenis jerawatmu hanya dengan klik satu tombol 💡  
