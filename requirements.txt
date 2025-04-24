@@ -7,4 +7,4 @@ roboflow
 torch
 yolo
 vidgear
-opencv-python-headless
+opencv-python-headless==4.8.0.76
