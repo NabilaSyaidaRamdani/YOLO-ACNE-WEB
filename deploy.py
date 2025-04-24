@@ -25,6 +25,27 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+# 🌟 Insert 5 Vertical Feature Boxes with Pastel-Colored Shadows
+st.markdown("""
+    <div style="display: flex; flex-direction: column; row-gap: 1rem; margin-top: 2rem;">
+        <div style="background: #FFCDD2; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(255,205,210,0.4); text-align: center; color: #B71C1C; font-weight: bold;">
+            ⚡ Fast
+        </div>
+        <div style="background: #F8BBD0; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(248,187,208,0.4); text-align: center; color: #880E4F; font-weight: bold;">
+            🔬 Accurate
+        </div>
+        <div style="background: #E1BEE7; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(225,190,231,0.4); text-align: center; color: #4A148C; font-weight: bold;">
+            🌷 Personalized
+        </div>
+        <div style="background: #D1C4E9; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(209,196,233,0.4); text-align: center; color: #311B92; font-weight: bold;">
+            🔒 Safe
+        </div>
+        <div style="background: #C5CAE9; padding: 1rem; border-radius: 12px; box-shadow: 0 8px 16px rgba(197,202,233,0.4); text-align: center; color: #1A237E; font-weight: bold;">
+            🎉 Fun
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
 # 💡 Load model YOLOv11
 model = YOLO("best.pt")
 
@@ -105,7 +126,6 @@ st.sidebar.markdown("""
     <br><br>
 """, unsafe_allow_html=True)
 
-# Siapkan variabel agar dapat diakses di main page
 uploaded_video = None
 uploaded_image = None
 
@@ -117,14 +137,14 @@ with st.sidebar:
         if st.button("🖼️ Klik untuk memilih gambar"):
             uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
 
-    # Box Tips & Tricks dengan box-shadow vertikal
+    # Tips & Tricks box
     st.markdown("""
         <div style="
             background-color: #fff0f5;
             padding: 16px;
             border-radius: 12px;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.2), 0 20px 30px rgba(0,0,0,0.1), 0 30px 50px rgba(0,0,0,0.1);
-            margin-top: 10px;
+            box-shadow: 0 10px 15px rgba(255,182,193,0.4), 0 20px 30px rgba(255,182,193,0.3);
+            margin-top: 50px;
         ">
             <h4 style="color:#d63384;">💡 Skincare Tips & Trick</h4>
             <div style="display:flex; justify-content:space-between;">
