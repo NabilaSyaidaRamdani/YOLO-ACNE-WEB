@@ -66,17 +66,18 @@ def plot_boxes(frame, model):
 def show_recommendations(labels):
     # Ensure labels are detected before showing recommendations
     if labels:
-        for label in labels:
-            if label == "Acne Scars":
-                st.write("🌟 **Bekas Jerawat:** Gunakan produk yang mengandung retinoid, pertimbangkan terapi laser, dan jangan lupa selalu menggunakan tabir surya! 😊")
-            elif label == "Whitehead":
-                st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
-            elif label == "Blackhead":
-                st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
-            elif label == "Papules":
-                st.write("🌟 **Papule:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
-            elif label == "Nodule":
-                st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
+      def show_recommendations(labels):
+    for label in labels:
+        if label == "whitehead":
+            st.write("🌟 **Komedo Putih:** Eksfoliasi rutin dengan produk berbasis asam salisilat dan gunakan benzoyl peroxide untuk mengurangi peradangan.")
+        elif label == "blackhead":
+            st.write("🌟 **Komedo Hitam:** Gunakan pembersih berbasis salicylic acid dan toner dengan Witch Hazel untuk mengecilkan pori-pori.")
+        elif label == "papule":
+            st.write("🌟 **Papule:** Gunakan gel atau krim dengan benzoyl peroxide dan hindari memencet jerawat!")
+        elif label == "nodule":
+            st.write("🌟 **Nodul:** Perawatan dengan retinoid oral atau antibiotik, dan konsultasikan ke dokter kulit jika diperlukan.")
+        elif label == "pustule":
+            st.write("🌟 **Pustule:** Gunakan produk dengan benzoyl peroxide dan asam salisilat. Hindari memencetnya, dan pertimbangkan untuk berkonsultasi dengan dokter kulit.")
 
 # Modified plot_boxes function
 def plot_boxes(frame, model):
