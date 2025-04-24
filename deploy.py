@@ -96,7 +96,7 @@ placeholder = st.empty()
 # 🎥 Webcam Mode
 if source == "Webcam":
     if st.button("🎬 Mulai Deteksi Webcam"):
-        cap = cv2.VideoCapture(0)
+        cap = cv2.VideoCapture(1)
         if not cap.isOpened():
             st.error("😥 Tidak bisa membuka kamera.")
         else:
