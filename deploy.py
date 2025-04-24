@@ -99,7 +99,7 @@ if source == "Webcam":
                 ret, frame = cap.read()
                 if not ret or stop:
                     break
-                frame = cv2.resize(frame, (640, 480))
+                frame = cv2.resize(frame, (640, 640))
                 result_img, labels = plot_boxes(frame, model)
                 placeholder.image(result_img, channels="BGR", use_container_width=True)
                 
