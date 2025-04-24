@@ -52,7 +52,41 @@ def show_recommendations(labels):
     for label, count in acne_count.items():
         icon = emoji_dict.get(label, "🌸")
         st.markdown(f"### {icon} **Detected {label.capitalize()} ({count}x)**")
-        # ... (isi rekomendasi seperti sebelumnya) ...
+        if label == "whitehead":
+            st.markdown("""
+            - ✨ **Komedo Putih Tips**:
+              - 🧽 Eksfoliasi rutin (2-3x/minggu) dengan **Salicylic Acid (BHA)**
+              - ❄️ Gunakan produk yang mengandung **Benzoyl Peroxide**
+            - 🧴 **Rekomendasi**: *CeraVe Renewing SA Cleanser*
+            """)
+        elif label == "blackhead":
+            st.markdown("""
+            - ✨ **Komedo Hitam Tips**:
+              - 🧼 Cleanser dengan **Salicylic Acid**
+              - 🌿 Toner dengan **Witch Hazel**
+            - 🧴 **Rekomendasi**: *The Ordinary Salicylic Acid 2% Solution*
+            """)
+        elif label == "papule":
+            st.markdown("""
+            - ✨ **Papule Tips**:
+              - 🚫 Jangan dipencet!
+              - 💊 Gunakan **Benzoyl Peroxide** gel
+            - 🧴 **Rekomendasi**: *CeraVe Acne Foaming Cream Cleanser*
+            """)
+        elif label == "nodule":
+            st.markdown("""
+            - ✨ **Nodul Tips**:
+              - 🔬 Konsultasi dokter kulit
+              - 💊 Retinoid oral atau antibiotik
+            - 🧴 **Rekomendasi**: *Cetaphil PRO Oil Removing Foam Wash*
+            """)
+        elif label == "pustule":
+            st.markdown("""
+            - ✨ **Pustule Tips**:
+              - ❌ Hindari memencet!
+              - 💧 Kombinasikan **Benzoyl Peroxide** + **Salicylic Acid**
+            - 🧴 **Rekomendasi**: *Neutrogena Clear Pore Cleanser/Mask*
+            """)
 
 # 🎀 Sidebar input: pilihan & uploader
 source = st.sidebar.radio("📷 Pilih Sumber Deteksi:", ["Upload Video", "Upload Gambar"])
@@ -71,13 +105,19 @@ st.sidebar.markdown("""
     <br><br>
 """, unsafe_allow_html=True)
 
+# Siapkan variabel agar dapat diakses di main page
+uploaded_video = None
+uploaded_image = None
+
 with st.sidebar:
     if source == "Upload Video":
-        uploaded_video = st.file_uploader("📼 Upload video jerawat kamu di sini!", type=["mp4","avi","mov"])
+        if st.button("🎥 Klik untuk memilih video"):
+            uploaded_video = st.file_uploader("📼 Upload video jerawat kamu di sini!", type=["mp4","avi","mov"])
     else:
-        uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
+        if st.button("🖼️ Klik untuk memilih gambar"):
+            uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
 
-    # Box Tips & Tricks
+    # Box Tips & Tricks dengan box-shadow
     st.markdown("""
         <div style="
             background-color: #fff0f5;
@@ -112,7 +152,7 @@ with st.sidebar:
 placeholder = st.empty()
 
 # 🎞️ Proses Upload Video
-if source == "Upload Video" and 'uploaded_video' in locals() and uploaded_video:
+if source == "Upload Video" and uploaded_video:
     tfile = tempfile.NamedTemporaryFile(delete=False)
     tfile.write(uploaded_video.read())
     cap = cv2.VideoCapture(tfile.name)
@@ -130,7 +170,7 @@ if source == "Upload Video" and 'uploaded_video' in locals() and uploaded_video:
     st.success("🎉 Video selesai diproses!")
 
 # 🖼️ Proses Upload Gambar
-elif source == "Upload Gambar" and 'uploaded_image' in locals() and uploaded_image:
+elif source == "Upload Gambar" and uploaded_image:
     img = Image.open(uploaded_image)
     frame_rgb = np.array(img.convert("RGB"))
     frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
