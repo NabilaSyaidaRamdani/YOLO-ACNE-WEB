@@ -1,9 +1,10 @@
-streamlit
-ultralytics
 pillow
 numpy<2
 roboflow
-torch
 yolo
 vidgear
+streamlit==1.32.2
 opencv-python-headless==4.8.0.76
+torch==2.0.1
+numpy<2
+ultralytics==8.0.219
