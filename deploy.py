@@ -25,21 +25,12 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-
-# 🌷 Judul Aplikasi dengan Box Shadow
 st.markdown("""
     <div style="text-align: center; margin: 30px 0;">
         <img src="https://i.ibb.co/ZTkj9hC/cloud-divider.png" style="width: 100%;"/>
     </div>
 """, unsafe_allow_html=True)
 """)
-
-📌 *Nanti bisa aku bantuin bikin gambar "awan" ini kalau kamu belum punya file-nya ya.*
-
----
-
-#### ✅ 3. **Bagian “Join our family” + Form**
-```python
 st.markdown("""
     <div style='
         background-color: #CDE8FF;
