@@ -10,24 +10,20 @@ st.set_page_config(page_title="Acne Detection", layout="wide")
 
 # 🌼 CSS Background lucu dan gaya imut dengan warna ocean blue
 st.markdown("""
-    <style>
-    body {
-        background-color: #FFFFFF;  /* Putih bersih */
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-    }
-    .stApp {
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 30px;
+    <div style='
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
         border-radius: 20px;
-        box-shadow: 0px 0px 20px pink;
-        color: #333333; /* Warna teks utama abu tua */
-    }
-    h1, h2, h3 {
-        color: #D63384; /* Pink yang lebih gelap */
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);  /* Bayangan ringan biar makin jelas */
-    }
-    </style>
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    '>
+        <h1 style='color: #D63384;'>💖 Welcome to AcneVision</h1>
+        <p style='font-size: 18px; color: #555555;'>
+            Detect your acne type easily and get personalized skincare tips 🌷<br>
+            Powered by YOLOv11 and DeepSORT
+        </p>
+    </div>
 """, unsafe_allow_html=True)
 
 # 🌷 Judul Aplikasi
