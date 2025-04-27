@@ -8,6 +8,7 @@ import tempfile
 # 🌸 HARUS DITEMPATKAN DI AWAL
 st.set_page_config(page_title="Acne Detection", layout="wide")
 
+# 🌼 CSS Background lucu dan gaya imut dengan warna ocean blue
 st.markdown("""
     <div style='
         background: rgba(255, 255, 255, 0.6);
@@ -46,7 +47,7 @@ def show_recommendations(labels):
     emoji_dict = {"whitehead":"⚪","blackhead":"⚫","papule":"🔴","nodule":"🟣","pustule":"🟡"}
     for label, count in acne_count.items():
         icon = emoji_dict.get(label, "🌸")
-        st.markdown(f"### {icon} **Detected {label.capitalize()} ({count}x)**")
+        st.markdown(f"### {icon} *Detected {label.capitalize()} ({count}x)*")
         # detailed tips omitted for brevity
 
 # 🎀 Sidebar input
@@ -74,7 +75,7 @@ with tt:
         <div style="background-color:#fff0f5; padding:16px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
             <h4 style="color:#d63384;">💡 Skincare Tips & Trick</h4>
             <div style="display:flex; justify-content:space-between;">
-                <div style="width:48%;"><strong>🌞 Pagi</strong><br>🧼 Gentle cleanser<br>☀️ Sunscreen SPF 30+<br>💧 Moisturizer ringan</div>
+                <div style="width:48%;"><strong>🌞 Pagi</strong><br>🧼 Gentle cleanser<br>☀ Sunscreen SPF 30+<br>💧 Moisturizer ringan</div>
                 <div style="width:48%;"><strong>🌙 Malam</strong><br>🌿 Double cleansing<br>🎯 Serum (AHA-BHA)<br>💤 Night cream</div>
             </div>
             <hr style="margin:10px 0;">
@@ -82,10 +83,10 @@ with tt:
         </div>
     """, unsafe_allow_html=True)
 
-# 🖼️ Placeholder untuk output
+# 🖼 Placeholder untuk output
 placeholder = st.empty()
 
-# 🎞️ Upload Video
+# 🎞 Upload Video
 if source == "Upload Video":
     # push uploader down
     st.markdown("<br><br><br>", unsafe_allow_html=True)
@@ -107,11 +108,11 @@ if source == "Upload Video":
         cap.release()
         st.success("🎉 Video selesai diproses!")
 
-# 🖼️ Upload Gambar
+# 🖼 Upload Gambar
 elif source == "Upload Gambar":
     # push uploader down
     st.markdown("<br><br><br>", unsafe_allow_html=True)
-    uploaded_image = st.file_uploader("🖼️ Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
+    uploaded_image = st.file_uploader("🖼 Upload gambar wajahmu di sini!", type=["jpg","jpeg","png"])
     if uploaded_image:
         image = Image.open(uploaded_image)
         frame_rgb = np.array(image.convert("RGB"))
@@ -127,3 +128,6 @@ elif source == "Upload Gambar":
             st.markdown("## 🌟 Rekomendasi Perawatan")
             show_recommendations(labels)
         st.balloons()
+
+
+tambahkan disini code nya
