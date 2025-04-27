@@ -128,6 +128,3 @@ elif source == "Upload Gambar":
             st.markdown("## 🌟 Rekomendasi Perawatan")
             show_recommendations(labels)
         st.balloons()
-
-
-tambahkan disini code nya
