@@ -8,7 +8,6 @@ import tempfile
 # 🌸 HARUS DITEMPATKAN DI AWAL
 st.set_page_config(page_title="Acne Detection", layout="wide")
 
-# 🌼 CSS Background lucu dan gaya imut dengan warna ocean blue
 st.markdown("""
     <div style='
         background: rgba(255, 255, 255, 0.6);
